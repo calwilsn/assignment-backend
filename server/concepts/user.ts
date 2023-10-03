@@ -11,8 +11,6 @@ export default class UserConcept {
   public readonly users = new DocCollection<UserDoc>("users");
 
   async getById(_id: ObjectId) {
-    // TODO 1: Implement this method
-    // Hint: check out this.users.readOne
     const user = await this.users.readOne({ _id });
     return user;
   }
@@ -24,8 +22,6 @@ export default class UserConcept {
   }
 
   async update(_id: ObjectId, update: Partial<UserDoc>) {
-    // TODO 2: Implement this method
-    // Hint: check out this.users.updateOne
     await this.users.updateOne({ _id }, update);
   }
 
