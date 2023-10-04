@@ -62,7 +62,6 @@ class Routes {
 
   @Router.delete("/posts/:_id")
   async deletePost(session: WebSessionDoc, _id: ObjectId) {
-    // TODO 3: Delete the post with given _id
     // Make sure the user deleting is the author of the post
     const sessionUser = WebSession.getUser(session);
     const post = await Post.posts.readOne({ _id });
@@ -78,6 +77,84 @@ class Routes {
     }
 
     return await Post.delete(_id);
+  }
+  
+  /*
+  select or deselect a location on a map
+  */
+  @Router.patch("/map")
+  async selectLocation(session: WebSessionDoc, location: ObjectId, map: ObjectId) {
+
+  }
+
+  /*
+  add or remove a pin from the map
+  */
+  @Router.patch("/map")
+  async addPin(session: WebSessionDoc, pin: ObjectId, map: ObjectId) {
+
+  }
+
+  /*
+  get a location at given coordinates
+  */
+  @Router.get("/location")
+  async getLocation(query: Filter<PostDoc>) {
+    
+  }
+
+  /*
+  Read pinpoints that meet given query
+  */
+  @Router.get("/pinpoints")
+  async getPinPoints(query: Filter<PostDoc>) {
+
+  }
+
+  // What should be type of content?
+  @Router.post("/pinpoints")
+  async createPinPoint(session: WebSessionDoc, content: ObjectId, caption: string) {
+
+  }
+
+  /*
+  Delete a pinpoint
+  */
+  @Router.delete("/pinpoints/:_id")
+  async deletePinPoint(session: WebSessionDoc, _id: ObjectId) {
+    
+  }
+
+  /*
+  Read a collection
+  */
+  @Router.get("/collections")
+  async getCollections(session: WebSessionDoc, _id: ObjectId) {
+
+  }
+
+  /*
+  Create a new collection
+  */
+  @Router.post("/collection")
+  async createCollection(session: WebSessionDoc, name: string) {
+
+  }
+
+  /*
+  Create a new collection
+  */
+  @Router.patch("/collection")
+  async addUser(session: WebSessionDoc, newUser: ObjectId) {
+
+  }
+
+  /*
+  Create a new collection
+  */
+  @Router.patch("/collection")
+  async addItem(session: WebSessionDoc, newItem: ObjectId) {
+
   }
 }
 
