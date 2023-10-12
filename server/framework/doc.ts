@@ -115,27 +115,6 @@ export default class DocCollection<Schema extends BaseDoc> {
     return await this.collection.updateOne(filter, { $set: update }, options);
   }
 
-  // async appendToUserArray(_id: ObjectId, userId: ObjectId): Promise<void> {
-  //   const update = {
-  //     $push: {
-  //       users: userId
-  //     }
-  //   };
-
-  //   const filter: Filter<Schema> = { _id };
-    
-  //   try {
-  //     const result = await this.collection.updateOne(filter, update);
-  //     if (result.matchedCount === 0) {
-  //       console.error('No document matched the provided _id');
-  //     } else {
-  //       console.log('User successfully appended');
-  //     }
-  //   } catch (error) {
-  //     console.error('Error appending user:', error);
-  //   }
-  // }
-
   /**
    * Delete the document that matches `filter`.
    */

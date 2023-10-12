@@ -31,3 +31,11 @@ export class NotAllowedError extends FormattableError {
 export class NotFoundError extends FormattableError {
   public readonly HTTP_CODE = 404;
 }
+
+/**
+ * Corresponds to an action that attempts to access an attribute on a  resource that doesn't exist.
+ * If this action was a HTTP request, status code for this error would be 404 Not Found.
+ */
+export class DoesNotExistError extends FormattableError {
+  public readonly HTTP_CODE = 404;
+}

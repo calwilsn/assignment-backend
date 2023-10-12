@@ -1,6 +1,6 @@
 import { ObjectId } from "mongodb";
 import DocCollection, { BaseDoc } from "../framework/doc";
-import { BadValuesError, NotAllowedError } from "./errors";
+import { BadValuesError, NotAllowedError, NotFoundError } from "./errors";
 
 export interface UserDoc extends BaseDoc {
   username: string;
@@ -37,6 +37,14 @@ export default class UserConcept {
     const filter = username ? { username } : {};
     const users = (await this.users.readMany(filter)).map(this.sanitizeUser);
     return users;
+  }
+
+  async getUserByUsername(username: string) {
+    const user = await this.users.readOne({ username });
+    if (user === null) {
+      throw new NotFoundError("No user exists with this username");
+    }
+    return user;
   }
 
   async authenticate(username: string, password: string) {
